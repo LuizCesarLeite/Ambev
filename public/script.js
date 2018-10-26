@@ -4,7 +4,7 @@ const chat = document.getElementById('chat');
 /* Variavel que salva o contexto da conversa */
 let context = {};
 
-/* Função para determinar o template de cada mensagem durante o chat */
+/* Função para cria o div e determina o template aplicavel para cada mensagem durante o chat, dependendo da idenificação */
 const templateChatMessage = (message, from) => `
   <div class="from-${from}">
     <div class="message-inner">
@@ -18,6 +18,7 @@ const InsertTemplateInTheChat = (template) => {
   const div = document.createElement('div');
   div.innerHTML = template;
 
+  /* inclui a div criada na função acima no flow do chat */
   chat.appendChild(div);
 };
 
@@ -38,8 +39,13 @@ const getWatsonMessageAndInsertTemplate = async (text = '') => {
 
   if (response.output) {
     if (response.output.text) {
-      const template = templateChatMessage(response.output.text, 'watson');
-      InsertTemplateInTheChat(template);
+      var listaFrases = response.output.text;
+      if (listaFrases) {
+        listaFrases.forEach(function(frase){
+          const template = templateChatMessage(frase,'watson');
+          InsertTemplateInTheChat(template);
+        })
+      }
     }
   }  else {
     const template = templateChatMessage(response.code + ":" + response.error, 'watson');
