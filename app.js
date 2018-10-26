@@ -31,7 +31,9 @@ app.post('/conversation/', (req, res) => {
       /* console.error(err); ---> dica do autor */
       res.status(500).json(err);
     } else {
-    res.json(response);
+      /* escreve tudo que chega do Waston para ser lido na janela de inspeção dos navegadores*/
+      console.log("app.post(/conversation/); response:[" + JSON.stringify(response, null, 2) + "]");]
+      res.json(response);
     }
   });
 });
