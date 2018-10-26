@@ -32,7 +32,7 @@ app.post('/conversation/', (req, res) => {
       res.status(500).json(err);
     } else {
       /* escreve tudo que chega do Waston para ser lido na janela de inspeção dos navegadores*/
-      console.log("app.post(/conversation/); response:[" + JSON.stringify(response, null, 2) + "]");]
+      console.log("app.post(/conversation/); response:[" + JSON.stringify(response, null, 2) + "]");
       res.json(response);
     }
   });
