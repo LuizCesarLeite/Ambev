@@ -31,7 +31,7 @@ app.post('/conversation/', (req, res) => {
       /* console.error(err); ---> dica do autor */
       res.status(500).json(err);
     } else {
-      /* escreve tudo que chega do Waston para ser lido na janela de inspeção dos navegadores*/
+      /* escreve tudo que chega do Waston para ser lido na janela de inspeção dos navegadores ou debug */
       console.log("app.post(/conversation/); response:[" + JSON.stringify(response, null, 2) + "]");
       res.json(response);
     }
