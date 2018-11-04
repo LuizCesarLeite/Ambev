@@ -22,7 +22,7 @@ const InsertTemplateInTheChat = (template) => {
   chat.appendChild(div);
 };
 
-/* O que faz getWatsonMessageAndInsertTemple? */
+/* O que faz getWatsonMessageAndInsertTemplate? */
 const getWatsonMessageAndInsertTemplate = async (text = '') => {
   const uri = 'http://localhost:3000/conversation/';
 
@@ -48,6 +48,10 @@ const getWatsonMessageAndInsertTemplate = async (text = '') => {
         })
       }
     }
+
+    /** Caraio, preciso saber como processar imagens, pausas e botões */
+    /** A solução vai aqui nesse ponto? */
+    /** Edu, me explica o que esta aqui embaixo */
   }  else {
     const template = templateChatMessage(response.code + ":" + response.error, 'watson');
     InsertTemplateInTheChat(template);

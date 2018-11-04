@@ -13,7 +13,8 @@ const assistant = new AssistantV1({
   username: '56148049-66e2-4029-b697-5e035cacd7a8',
   password: 'L4jJjDqvF5gm',
   url: 'https://gateway.watsonplatform.net/assistant/api',
-  version: '2018-02-16',
+  /** version: '2018-02-16'*/
+  version: '2018-07-10',
 });
 
 /* */
@@ -28,14 +29,15 @@ app.post('/conversation/', (req, res) => {
 
   assistant.message(params, (err, response) => {
     if (err) {
-      /* console.error(err); ---> dica do autor */
+      /* console.error(err); */
       res.status(500).json(err);
-    } else {
-      /* escreve tudo que chega do Waston para ser lido na janela de inspeção dos navegadores ou debug */
+    } 
+    else {
+      /* captura o log do Waston */
       console.log("app.post(/conversation/); response:[" + JSON.stringify(response, null, 2) + "]");
       res.json(response);
     }
   });
 });
 
-app.listen(port, () => console.log(`Running on port ${port}`));
+app.listen(port, () => console.log(`Rodando na porta ${port}`));
